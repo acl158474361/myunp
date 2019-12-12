@@ -27,6 +27,7 @@
         "syslog.h": "c",
         "select.h": "c",
         "poll.h": "c",
-        "uio.h": "c"
+        "uio.h": "c",
+        "unp.h": "c"
     }
 }
