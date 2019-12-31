@@ -4,9 +4,11 @@
 
 
 int main(void){
-    // Linux 上 sockaddr_in 和 sockaddr 都没有sa_len 字段
+    // Linux 上 的所有地址结构都没有长度字段
     struct sockaddr_in sin;
     struct sockaddr sa;
-    
-    
+    struct sockaddr_in6 sin6;
+    struct sockaddr_un su;
+    sizeof(sin);
+    sizeof(sin6);
 }

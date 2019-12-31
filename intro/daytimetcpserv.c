@@ -15,7 +15,7 @@ int main(int argc, char* argv[]){
     serv_addr.sin_port = htons(13);
     serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
-    if(bind(serv_sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0){
+    if(bind(serv_sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0){ //因为Linux的套接字地址结构没有长度字段，所以要提供第三个参数 
         err_sys("bind error");
     }
     if(listen(serv_sockfd, 10) < 0){
