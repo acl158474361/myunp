@@ -29,6 +29,8 @@
         "poll.h": "c",
         "uio.h": "c",
         "unp.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "config.h": "c",
+        "types.h": "c"
     }
 }
