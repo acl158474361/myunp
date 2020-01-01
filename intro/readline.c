@@ -45,5 +45,6 @@ ssize_t readline_1(int fd, void *vptr, ssize_t maxlen){
 int main(void){
     char buf[10];
     int count = readline_1(STDIN_FILENO, buf, sizeof(buf));
-    
+    printf("%d\n", count);
+    printf("%c\n", *buf_ptr);
 }
