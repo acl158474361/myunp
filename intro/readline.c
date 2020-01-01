@@ -29,8 +29,7 @@ ssize_t readline_1(int fd, void *vptr, ssize_t maxlen){
     for(n = 1; n < maxlen; ++n){
         if( (nr = my_read(fd, cp)) < 0){
             return -1;
-        }
-        if(nr == 0){
+        }else if(nr == 0){
             *cp = '\0';
             return n-1;
         }
