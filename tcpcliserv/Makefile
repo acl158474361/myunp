@@ -11,5 +11,5 @@ all:$(PROC)
 tcpserv01: tcpserv01.o sigchldwait.o
 	gcc -o $@ tcpserv01.o sigchldwait.o -L../ -lunp
 
-tcpserv04: tcpserv01.o sigchldwaitpid.o
-	gcc -o $@ tcpserv01.o sigchldwaitpid.o  -L../ -lunp
+tcpserv04: tcpserv04.o sigchldwaitpid.o
+	gcc -o $@ tcpserv04.o sigchldwaitpid.o  -L../ -lunp

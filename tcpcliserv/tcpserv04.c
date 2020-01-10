@@ -15,9 +15,15 @@ int main(void){
 
     Bind(serv_fd, (SA*)&serv_addr, sizeof(serv_addr));
     Listen(serv_fd, LISTENQ);
+    Signal(SIGCHLD, sig_chld);
     for(;;){
         cli_len = sizeof(cli_addr);
-        cli_fd = Accept(serv_fd, (SA*)&cli_addr, &cli_len);
+        if( (cli_fd = accept(serv_fd, (SA*)&cli_addr, &cli_len)) < 0){
+            if(errno == EINTR){
+                continue;
+            }
+            err_sys("accept error");
+        }
         if( (pid = Fork()) == 0){
             Close(serv_fd);
             str_echo(cli_fd);
