@@ -5,6 +5,7 @@ int main(void){
     struct sockaddr_in serv_addr, cli_addr;
     socklen_t cli_len;
     pid_t pid;
+    Sigfunc sig_chld;
 
     serv_fd = Socket(AF_INET, SOCK_STREAM, 0);
     bzero(&serv_addr, sizeof(serv_addr));
@@ -14,7 +15,7 @@ int main(void){
 
     Bind(serv_fd, (SA*)&serv_addr, sizeof(serv_addr));
     Listen(serv_fd, LISTENQ);
-
+    Signal(SIGCHLD, sig_chld);
     for(;;){
         cli_len = sizeof(cli_addr);
         cli_fd = Accept(serv_fd, (SA*)&cli_addr, &cli_len);
