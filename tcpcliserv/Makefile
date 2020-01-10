@@ -1,4 +1,4 @@
-PROC = tcpcli01 tcpserv01 sigchldwait.o
+PROC = tcpcli01 tcpserv01 sigchldwait.o tcpcli04 sigchldwaitpid.o  tcpserv04
 
 all:$(PROC)
 
@@ -10,3 +10,6 @@ all:$(PROC)
 
 tcpserv01: tcpserv01.o sigchldwait.o
 	gcc -o $@ tcpserv01.o sigchldwait.o -L../ -lunp
+
+tcpserv04: tcpserv01.o sigchldwaitpid.o
+	gcc -o $@ tcpserv01.o sigchldwaitpid.o  -L../ -lunp
