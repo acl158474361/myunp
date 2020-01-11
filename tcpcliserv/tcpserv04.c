@@ -15,7 +15,7 @@ int main(void){
 
     Bind(serv_fd, (SA*)&serv_addr, sizeof(serv_addr));
     Listen(serv_fd, LISTENQ);
-    Signal(SIGCHLD, sig_chld);
+    Signal(SIGCHLD, sig_chld); //P110 sig_chld必须调用waitpid 如果调用wait 由于Linux信号不排队 可能只有一部分的子进程被父进程wait 其他子进程变成僵死进程
     for(;;){
         cli_len = sizeof(cli_addr);
         if( (cli_fd = accept(serv_fd, (SA*)&cli_addr, &cli_len)) < 0){
