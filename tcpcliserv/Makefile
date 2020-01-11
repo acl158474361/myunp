@@ -1,15 +1,20 @@
-PROC = tcpcli01 tcpserv01 sigchldwait.o tcpcli04 sigchldwaitpid.o  tcpserv04
+PROC = tcpcli01 tcpserv01 sigchldwait.o tcpcli04 sigchldwaitpid.o  tcpserv04 tcpserv03
 
 all:$(PROC)
 
 %.o:%.c
-	gcc -c -I../lib -o $@ $< 
+	gcc -g -c -I../lib -o $@ $< 
 
 %:%.c
-	gcc -I../lib -o $@ $< -L../ -lunp
+	gcc -g -I../lib -o $@ $< -L../ -lunp
 
-tcpserv01: tcpserv01.o sigchldwait.o
-	gcc -o $@ tcpserv01.o sigchldwait.o -L../ -lunp
+tcpserv03: tcpserv03.o sigchldwait.o
+	gcc -g -o $@ tcpserv03.o sigchldwait.o -L../ -lunp
 
 tcpserv04: tcpserv04.o sigchldwaitpid.o
-	gcc -o $@ tcpserv04.o sigchldwaitpid.o  -L../ -lunp
+	gcc -g -o $@ tcpserv04.o sigchldwaitpid.o  -L../ -lunp
+
+.PHONY:clean
+
+clean:
+	rm $(PROC) tcpserv03.o tcpserv04.o
