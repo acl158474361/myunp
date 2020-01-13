@@ -31,6 +31,7 @@
         "unp.h": "c",
         "string.h": "c",
         "config.h": "c",
-        "types.h": "c"
+        "types.h": "c",
+        "in.h": "c"
     }
 }

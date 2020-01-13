@@ -1,4 +1,4 @@
-PROC = tcpcli01 tcpserv01 sigchldwait.o tcpcli04 sigchldwaitpid.o  tcpserv04 tcpserv03
+PROC = tcpcli01 tcpserv01 sigchldwait.o tcpcli04 sigchldwaitpid.o  tcpserv04 tcpserv03 tcpserv08
 
 all:$(PROC)
 
@@ -13,6 +13,9 @@ tcpserv03: tcpserv03.o sigchldwait.o
 
 tcpserv04: tcpserv04.o sigchldwaitpid.o
 	gcc -g -o $@ tcpserv04.o sigchldwaitpid.o  -L../ -lunp
+
+tcpserv08: tcpserv08.o sigchldwaitpid.o
+	gcc -g -o $@ tcpserv08.o sigchldwaitpid.o  -L../ -lunp
 
 .PHONY:clean
 
