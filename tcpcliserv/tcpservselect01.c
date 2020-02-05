@@ -68,6 +68,7 @@ int main(void){
             }
             if(FD_ISSET(sockfd, &rset)){
                 if( (n = Read(sockfd, buf, MAXLINE)) == 0){
+                    printf("clients[%d] closed connection\n", i);
                     Close(sockfd);
                     FD_CLR(sockfd, &allset);
                     clients[i] = -1;
