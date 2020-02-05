@@ -1,4 +1,4 @@
-PROC = tcpcli01 tcpserv01 sigchldwait.o tcpcli04 sigchldwaitpid.o  tcpserv04 tcpserv03 tcpserv08 strcli.o
+PROC = tcpcli01 tcpserv01 sigchldwait.o tcpcli04 sigchldwaitpid.o  tcpserv04 tcpserv03 tcpserv08 strcli.o tcpservselect01
 
 all:$(PROC)
 
