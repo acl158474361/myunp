@@ -1,7 +1,7 @@
 #include "unp.h"
 
 int main(void){
-    int i, maxi, maxfdp1, listenfd, connfd, sockfd;
+    int i, maxi, maxfd, listenfd, connfd, sockfd;
     int clients[FD_SETSIZE], nready;
     ssize_t n;
     fd_set rset, allset;
@@ -20,7 +20,7 @@ int main(void){
 
     Listen(listenfd, LISTENQ);
 
-    maxfdp1 = listenfd;
+    maxfd = listenfd;
     maxi = -1;
     for(i = 0; i < FD_SETSIZE; ++i){
         clients[i] = -1;
@@ -30,7 +30,7 @@ int main(void){
 
     for(;;){
         rset = allset;
-        nready = Select(maxfdp1+1, &rset, NULL, NULL, NULL);
+        nready = Select(maxfd+1, &rset, NULL, NULL, NULL);
 
         if(FD_ISSET(listenfd, &rset)){
             clilen = sizeof(cliaddr);
@@ -50,8 +50,8 @@ int main(void){
             }
 
             FD_SET(connfd, &allset);
-            if(connfd > maxfdp1){
-                maxfdp1 = connfd;
+            if(connfd > maxfd){
+                maxfd = connfd;
             }
             if(i > maxi){
                 maxi = i;
