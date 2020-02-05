@@ -32,6 +32,7 @@
         "string.h": "c",
         "config.h": "c",
         "types.h": "c",
-        "in.h": "c"
+        "in.h": "c",
+        "strcli.h": "c"
     }
 }
