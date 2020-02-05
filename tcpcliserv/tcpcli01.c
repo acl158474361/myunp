@@ -1,5 +1,7 @@
 #include "unp.h"
 
+#include "strcli.h"
+
 int main(int argc, char* argv[]){
     int cli_fd;
     struct sockaddr_in serv_addr;
