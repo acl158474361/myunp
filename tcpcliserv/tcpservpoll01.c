@@ -22,7 +22,7 @@ int main(void){
     Bind(listenfd, (SA*)&servaddr, sizeof(servaddr));
 
     Listen(listenfd, LISTENQ);
-
+    printf("listenfd %s\n", Sock_ntop((SA*)&servaddr, sizeof(servaddr)));
     clients[0].fd = listenfd;
     clients[0].events = POLLIN;
     for(i = 1; i < OPEN_MAX; ++i){
