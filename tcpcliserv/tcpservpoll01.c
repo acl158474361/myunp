@@ -8,9 +8,9 @@ int main(void){
     int nready;
     ssize_t n;
     char buf[MAXLINE];
-    socklen_t clilen;
+    socklen_t clilen, connlen;
     struct pollfd clients[OPEN_MAX];
-    struct sockaddr_in cliaddr, servaddr;
+    struct sockaddr_in cliaddr, servaddr, connaddr;
 
     listenfd = Socket(AF_INET, SOCK_STREAM, 0);
 
@@ -37,7 +37,11 @@ int main(void){
             clilen = sizeof(cliaddr);
             connfd = Accept(listenfd, (SA*)&cliaddr, &clilen);
             printf("new client: %s\n", Sock_ntop((SA*)&cliaddr, clilen));
-
+            connlen = sizeof(connaddr);
+            getsockname(connfd, (SA*)&connaddr, &connlen);
+            printf("sockname %s\n", Sock_ntop((SA*)&connaddr, connlen));
+            getpeername(connfd, (SA*)&connaddr, &connlen);
+            printf("peername %s\n", Sock_ntop((SA*)&connaddr, connlen));
             for(i = 1; i < OPEN_MAX; ++i){
                 if(clients[i].fd < 0){
                     clients[i].fd = connfd;
