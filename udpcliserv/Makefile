@@ -1,4 +1,4 @@
-PROGS = udpcli01
+PROGS = udpcli01 echo.o udpcli02
 
 all: $(PROGS)
 
@@ -7,3 +7,6 @@ all: $(PROGS)
 
 %:%.c
 	gcc -g -I../lib -o $@ $< -L../ -lunp
+
+udpcli02: udpcli02.o echo.o
+	gcc -o $@ udpcli02.o echo.o -L../ -lunp
