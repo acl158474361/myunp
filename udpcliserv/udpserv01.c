@@ -9,7 +9,7 @@ int main(int argc, char** argv){
 
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
-    servaddr.sin_port = htonl(SERV_PORT);
+    servaddr.sin_port = htons(SERV_PORT);
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 
     Bind(sockfd, (SA*)&servaddr, sizeof(servaddr));
