@@ -11,8 +11,11 @@ int main(int argc, char** argv){
     }
 
     bzero(&servaddr, sizeof(servaddr));
+#ifdef HAVE_SOCKADDR_SA_LEN
+    servaddr.sin_len = sizeof(servaddr);
+#endif
     servaddr.sin_family = AF_INET;
-    servaddr.sin_port = htons(7); //7是echo服务的端口
+    servaddr.sin_port = htons(SERV_PORT);  //7是众所周知echo服务的端口
     Inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
 
     sockfd = Socket(AF_INET, SOCK_DGRAM, 0);
