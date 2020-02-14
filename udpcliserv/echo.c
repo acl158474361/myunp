@@ -1,8 +1,7 @@
 #include "echo.h"
 #include "unp.h"
 
-#define NDG 2000
-#define DGLEN 1400
+
 /* void dg_cli(FILE *fp, int sockfd, const struct sockaddr *pservaddr, socklen_t servlen){
     int n;
     char sendline[MAXLINE], recvline[MAXLINE+1];
@@ -26,7 +25,7 @@
     
 } */
 
-/* void dg_cli(FILE *fp, int sockfd, const struct sockaddr *pservaddr, socklen_t servlen){
+void dg_cli(FILE *fp, int sockfd, const struct sockaddr *pservaddr, socklen_t servlen){
     int n;
     char sendline[MAXLINE], recvline[MAXLINE+1];
 
@@ -37,16 +36,20 @@
         recvline[n] = '\0';
         Fputs(recvline, stdout);
     }
-} */
+}
+
+
+/* #define NDG 2000
+#define DGLEN 1400
 
 void dg_cli(FILE *fp, int sockfd, const struct sockaddr *pservaddr, socklen_t servlen){
     char sendline[DGLEN];
     for(int i = 0; i < NDG; ++i){
         Sendto(sockfd, sendline, DGLEN, 0, pservaddr, servlen);
     }
-}
+} */
 
-/* void dg_echo(int sockfd, struct sockaddr *pcliaddr, socklen_t clilen){
+void dg_echo(int sockfd, struct sockaddr *pcliaddr, socklen_t clilen){
     int n;
     socklen_t len;
     char mesg[MAXLINE];
@@ -57,9 +60,9 @@ void dg_cli(FILE *fp, int sockfd, const struct sockaddr *pservaddr, socklen_t se
 
         Sendto(sockfd, mesg, n, 0, pcliaddr, len);
     }
-} */
+}
 
-static void recvfrom_int(int);
+/* static void recvfrom_int(int);
 static int count;
 
 void dg_echo(int sockfd, struct sockaddr *pcliaddr, socklen_t clilen){
@@ -77,4 +80,4 @@ void dg_echo(int sockfd, struct sockaddr *pcliaddr, socklen_t clilen){
 static void recvfrom_int(int signo){
     printf("\nreceived %d datagrams\n", count);
     exit(0);
-}
+} */

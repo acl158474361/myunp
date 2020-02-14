@@ -1,4 +1,4 @@
-PROGS = udpcli01 echo.o udpcli02 udpserv01
+PROGS = udpcli01 echo.o udpcli02 udpserv01 udpcli09
 
 all: $(PROGS)
 
